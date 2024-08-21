@@ -4,6 +4,10 @@ LABEL maintainer="cneblack.com"
 ENV PYTHONUNBUFFERED=1
 
 COPY ./requirements.txt /tmp/requirements.txt 
+
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 COPY ./app /app
 WORKDIR /app
 EXPOSE 8000
@@ -20,4 +24,6 @@ RUN python -m venv /py && \
 ENV PATH="/py/bin:$PATH"
 
 USER django-user
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
         

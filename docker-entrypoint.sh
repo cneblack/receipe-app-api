@@ -9,6 +9,14 @@ case "${1:-}" in
         echo "$0: ${1#-}"
         set -- python manage.py runserver 0.0.0.0:8000
 	;;
+    -wait_for_db )
+        echo "$0: ${1#-}"
+        set -- python manage.py wait_for_db 
+	;;
+    -migrate  )
+        echo "$0: ${1#-}"
+        set -- python manage.py migrate  
+	;;
     -uwsgi)
         echo "$0: ${1#-}"
         set -- uwsgi \
@@ -30,6 +38,8 @@ case "${1:-}" in
         # "$0" -sync_email_templates
         # "$0" -sync_user_pwd_selfcare
         # set -- "$0" -uwsgi
+        set -- "$0" -wait_for_db
+        set -- "$0" -migrate
         set -- "$0" -runserver
         ;;
 

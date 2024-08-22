@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   app:
+    image: receipe-app-api-app:latest
     build:
       context: .
       args:

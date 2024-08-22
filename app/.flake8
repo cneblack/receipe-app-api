@@ -3,7 +3,7 @@
 ignore = E226,E302,E41
 max-line-length = 160
 exlude = 
-    */migrations,
+    core/migrations,
     __pychache__,
     manage.py,
     settings.py

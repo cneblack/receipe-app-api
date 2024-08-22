@@ -3,14 +3,15 @@ LABEL maintainer="cneblack.com"
 
 ENV PYTHONUNBUFFERED=1
 
-COPY ./requirements.txt /tmp/requirements.txt 
-COPY ./requirements.dev.txt /tmp/requirements.dev.txt 
-
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+COPY config_build/requirements.txt /tmp/requirements.txt 
+COPY config_build/requirements.dev.txt /tmp/requirements.dev.txt 
 
 COPY ./app /app
 WORKDIR /app
+
+COPY config_build/docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 EXPOSE 8000
 
 ARG DEV=false

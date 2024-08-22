@@ -13,15 +13,28 @@ case "${1:-}" in
         echo "$0: ${1#-}"
         set -- python manage.py wait_for_db 
 	;;
+    -tests )
+        echo "$0: ${1#-}"
+        set -- python manage.py test 
+	;;
     -makemigrations  )
         echo "$0: ${1#-}"
         set -- python manage.py makemigrations core
 	;;
     -migrate  )
         echo "$0: ${1#-}"
-        set -- python manage showmigrations
+        set -- python manage.py showmigrations
         set -- python manage.py migrate
 	;;
+    -shell)
+        echo "$0: ${1#-}"
+        set -- python manage.py shell
+        ;;
+
+    -bash)
+        echo "$0: ${1#-}"
+        set -- /bin/bash
+        ;;
     -uwsgi)
         echo "$0: ${1#-}"
         set -- uwsgi \

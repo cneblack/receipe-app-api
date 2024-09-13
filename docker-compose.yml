@@ -12,7 +12,7 @@ services:
     volumes:
       - ./app:/app
       - dev-static-data:/vol/web
-      # - .config_build/docker-entrypoint.sh:/app/docker-entrypoint.sh
+      - .config_build/docker-entrypoint.sh:/app/docker-entrypoint.sh
     command: ["-start"]
     environment:
       - DB_HOST=db

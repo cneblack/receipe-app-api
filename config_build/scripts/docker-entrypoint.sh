@@ -45,8 +45,8 @@ case "${1:-}" in
                      --workers 16 --master --no-orphans --vacuum \
                      --master-fifo /tmp/uwsgi-master-fifo \
                      --py-autoreload 1 \
-                     --socket 0.0.0.0:4080 \
-                     --module selfCare.wsgi \
+                     --socket 0.0.0.0:9000 \
+                     --module app.wsgi \
                      --buffer-size 32768 \
                      --harakiri 900 --harakiri-verbose
         ;;
@@ -57,7 +57,8 @@ case "${1:-}" in
         "$0" -collectstatic
         "$0" -makemigrations
         "$0" -migrate
-        "$0" -runserver
+        "$0" -uwsgi
+        # "$0" -runserver
         ;;
 
 esac

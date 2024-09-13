@@ -53,13 +53,6 @@ case "${1:-}" in
 
     -start)
         echo "$0: ${1#-}"
-        # "$0" -collectstatic
-        # "$0" -makemigrations
-        # "$0" -migrate
-        # "$0" -createcachetable
-        # "$0" -sync_email_templates
-        # "$0" -sync_user_pwd_selfcare
-        # set -- "$0" -uwsgi
         "$0" -wait_for_db
         "$0" -collectstatic
         "$0" -makemigrations

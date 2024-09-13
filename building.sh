@@ -3,7 +3,7 @@ exit_with_error() {
     echo $1 && exit 1
 }
 
-BASE_VERSION=$(grep -Po "(?<=^VERSION = \").+(?=\")" app/settings.py)
+BASE_VERSION=$(grep -Po "(?<=^VERSION = \").+(?=\")" app/app/settings.py)
 DESTINATION=$1
 
 # mkdir -p images_docker
